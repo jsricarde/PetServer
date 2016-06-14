@@ -17,6 +17,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var winston = require('winston');
 var nodemailer = require("nodemailer");
+var cfenv = require("cfenv")
+var appEnv = cfenv.getAppEnv()
 var port = 3000;
 var hostname = 'localhost';
 var config = require('./config');
@@ -125,10 +127,13 @@ io.on('connection', function(socket) {
 
 });
 
-
-http.listen(port, function() {
+/*http.listen(port, function() {
   console.log(`Server running at http://${hostname}:${port}/`);
-});
+});*/
 
+http.listen(appEnv.port, '0.0.0.0', function() {
+	// print a message when the server starts listening
+  console.log("server starting on " + appEnv.port);
+});
 
 module.exports = app;
