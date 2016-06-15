@@ -18,10 +18,9 @@ var winston = require('winston');
 var User = require('../models/user');
 var multer = require('multer');
 var Verify = require('./verify');
-var MailReq = require('./mail');
-var Mail = MailReq.create();
+//var MailReq = require('./mail');
+//var Mail = MailReq.create();
 //var utilReq = require('../utils/utils');
-//var Util = utilReq.create();
 var self = this;
 var options = {};
 
@@ -102,9 +101,9 @@ User.prototype.register = function (req, res) {
             }
             if (req.body.email) {
                 user.email = req.body.email;
-                subject = "Your Petime Registration successful";
+/*                subject = "Your Petime Registration successful";
                 body = "Hi "+req.body.first_name+" your account it is already, you can to login in the mobile application.";
-                Mail.sendMail(req.body.email, subject, textBody)
+                Mail.sendMail(req.body.email, subject, textBody)*/
             }
             if (req.body.country) {
                 user.country = req.body.country;
