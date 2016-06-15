@@ -19,12 +19,12 @@ var transporter = nodemailer.createTransport('smtps://jsricarde%40gmail.com:9202
 Mail.prototype.sendMail = function (toEmail, subject, textBody) {
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: 'jsricarde@gmail.com', 
+        from: 'jsricarde@gmail.com',
         to: toEmail,
         subject: subject,
-        text: textBody 
+        text: textBody
     };
-    
+
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -33,18 +33,15 @@ Mail.prototype.sendMail = function (toEmail, subject, textBody) {
         console.log('Message sent: ' + info.response);
     });
 
-    http.listen(port, function () {
-        console.log(`Server running at http://${hostname}:${port}/`);
-    });
-    var self = this;
-    var options = {};
-
-    Mail.prototype.className = "Mail";
-
-    module.exports.create = function () {
-        return new Mail();
-    };
 }
 
+var self = this;
+var options = {};
+
+Mail.prototype.className = "Mail";
+
+module.exports.create = function () {
+    return new Mail();
+};
 
 module.exports._class = Mail;
